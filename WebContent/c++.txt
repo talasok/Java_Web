@@ -1,0 +1,2 @@
+deserial  la tu c++ -> android
+serial la tu android sang c++
