@@ -26,7 +26,7 @@ public class gioHangBo {
 	public void thayDoiSoLuong(String masach, int soluong) {
 		for(gioHangBean gh: ds) {
 			if(gh.getMasach().equals(masach)) {
-				if(gh.getSoluong()+soluong>0) {
+				if(soluong>0) {
 					gh.setSoluong(soluong);
 					gh.setThanhtien(gh.getSoluong()*gh.getGia());
 				}
