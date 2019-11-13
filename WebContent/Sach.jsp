@@ -1,6 +1,6 @@
 <%@page import="Bean.sachbean"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="Bo.sachbo"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -12,8 +12,7 @@
 <body>
 	<table>
 			<%
-			sachbo sach = new sachbo();
-			ArrayList<sachbean> ds = sach.getsach();
+			ArrayList<sachbean> ds = (ArrayList<sachbean>)request.getAttribute("dssach");
 			int ss=ds.size();
 			for(int i=0;i<ss;i++){
 				sachbean s= ds.get(i);

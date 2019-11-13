@@ -12,4 +12,14 @@ public class loaiBo {
 		ds=L.getLoai();
 		return ds;
 	}
+	public ArrayList<loaiBean> getLoai1() {
+		ArrayList<loaiBean> ds=new ArrayList<loaiBean>();
+		try {
+			ds=L.getLoai1();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ds;
+	}
 }

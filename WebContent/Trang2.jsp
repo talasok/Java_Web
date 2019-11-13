@@ -19,7 +19,7 @@
 	gioHangBo gh1 = null;
 	int count=0;
 	long tien=0;
-	if(session.getAttribute("name")==null){
+	if(session.getAttribute("user")==null){
 		response.sendRedirect("dangnhap.jsp");
 	}
 	if(session.getAttribute("gh")!=null){
@@ -34,15 +34,15 @@
       <a class="navbar-brand" href="#">WebSiteName</a>
     </div>
     <ul class="nav navbar-nav">
-      <li><a href="Trang1.jsp">Home</a></li>
-      <li><a href="Trang2.jsp">Giỏ Hàng <%=count%>: <%=tien %></a></li>
-      <li><a href="#"><%=session.getAttribute("name") %></a></li>
+      <li><a href="SachServlet?kt=1">Home</a></li>
+      <li><a href="SachServlet?kt=2">Giỏ Hàng <%=count%>: <%=tien %></a></li>
+      <li><a href="#"><%=session.getAttribute("user")  %></a></li>
       <li><a href="dangxuat.jsp">Đăng xuất</a></li>
     </ul>
   </div>
 </nav>
 <div class="container">
-	<a href="Trang1.jsp">Tiep tuc mua hang</a>
+	<a href="SachServlet?kt=1">Tiep tuc mua hang</a>
 <form method='post' action="ktGioHang.jsp">
 	<table  class="table table-bordered">
 		<thead class="thead-dark">

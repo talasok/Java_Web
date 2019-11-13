@@ -1,10 +1,14 @@
+<%@page import="Bean.loaiBean"%>
+<%@page import="Bean.sachbean"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="Bo.sachbo"%>
 <%@page import="Bo.gioHangBo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Home</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -13,7 +17,7 @@
 </head>
 <body>
 <%
-	if(session.getAttribute("name")==null){
+	if(session.getAttribute("user")==null){
 		response.sendRedirect("dangnhap.jsp");
 	}
 	int count=0;
@@ -33,13 +37,62 @@
     <ul class="nav navbar-nav">
       <li><a href="Trang1.jsp">Home</a></li>
       <li><a href="Trang2.jsp">Giỏ Hàng <%=count%>: <%=tien %></a></li>
-      <li><a href="#"><%=session.getAttribute("name") %></a></li>
+      <li><a href="#"><%=session.getAttribute("user") %></a></li>
       <li><a href="dangxuat.jsp">Đăng xuất</a></li>
     </ul>
   </div>
 </nav>
 <div class="container">
-	<%@include file='NoidungHome.jsp'%>
+	<div>
+        <form action="SearchServlet" method="get" style="display: flex;padding-bottom: 10px; ">
+            <input type="text" name="key" value="" class="form-control" placeholder="Search for..." >
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="submit"style="height: 34px">
+                    Tìm kiếm
+                </button>
+            </div>
+        </form>
+    </div>
+	<div class="row">
+		<div class="col-md-3">
+		
+		    <div class="panel panel-default">
+				<div class="panel-heading">CHỦ ĐỀ SÁCH</div>
+					<div class="list-group">
+						<%
+						 ArrayList<loaiBean> ds1 = (ArrayList<loaiBean>)request.getAttribute("dsloai");
+						 for(loaiBean h : ds1){
+						 %>
+						<a href="LoaiServlet?ma=<%=h.getMaLoai()%>" class="list-group-item">
+						 <%=h.getTenLoai() %>
+						 </a>
+						<%} %> 
+					</div>
+				
+			 	</div>
+	                
+	 </div>
+	 <div class="col-md-9">
+	<table class="table">
+<%
+	ArrayList<sachbean> ds = (ArrayList<sachbean>)request.getAttribute("dssach");
+	//sachbo sach = new sachbo();
+	//ArrayList<sachbean> ds = sach.getsach();
+	int ss=ds.size();
+	for(int i=0;i<ss;i++){
+	sachbean s= ds.get(i);
+%>
+	<tr>
+		<td><img alt="" src="<%=s.getAnh()%>"> <br>
+			<%=s.getTensach() %> <br>
+			<%=s.getGia() %> <br>
+			<a href="SachServlet?ms=<%=s.getMasach()%>&ts=<%=s.getTensach()%>&tg=<%=s.getTacgia()%>&gia=<%=s.getGia()%>"> <img alt="" src="mua.jpg"> </a>
+		</td>
+	</tr>
+	<%} %>
+</table>
+</div>
+</div>
 </div>
 </body>
 </html>

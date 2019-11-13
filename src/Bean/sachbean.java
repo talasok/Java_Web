@@ -8,6 +8,7 @@ public class sachbean {
 	private String anh;
 	private String maloai;
 	
+	
 	public sachbean(String masach, String tensach, String tacgia, Long gia, String anh, String maloai) {
 		super();
 		this.masach = masach;

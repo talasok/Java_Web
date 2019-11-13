@@ -30,5 +30,10 @@ public class loaiBean {
 		this.tenLoai = tenLoai;
 		this.dssach = dssach;
 	}
+	public loaiBean(String maLoai, String tenLoai) {
+		super();
+		this.maLoai = maLoai;
+		this.tenLoai = tenLoai;
+	}
 	
 }
